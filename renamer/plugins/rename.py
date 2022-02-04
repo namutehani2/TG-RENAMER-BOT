@@ -72,7 +72,7 @@ async def media(c, m):
         file_location = await m.download(
                             file_name=download_location,
                             progress=progress_bar,
-                            progress_args=("Downloading:", start_time, send_message)
+                            progress_args=("İndiriliyor:", start_time, send_message)
                         )
     except Exception as e:
         logger.error(e)
@@ -130,7 +130,7 @@ async def media(c, m):
                 caption=caption,
                 thumb=thumbnail,
                 progress=progress_bar,
-                progress_args=("Uploading:", start_time, send_message)
+                progress_args=("Yükleniyor:", start_time, send_message)
             )
         except FloodWait as e:
             await asyncio.sleep(e.x)
