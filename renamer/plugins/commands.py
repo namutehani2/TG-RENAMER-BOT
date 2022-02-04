@@ -14,10 +14,10 @@ from pyrogram.emoji import *
 @RenamerNs.on_message(filters.command("help") & filters.private & filters.incoming)
 async def help(c, m, cb=False):
     button = [[
-        InlineKeyboardButton(f'{HOUSE_WITH_GARDEN} Home', callback_data='back'),
-        InlineKeyboardButton(f'{MONEY_BAG} Donate', callback_data='donate')
+        InlineKeyboardButton(f'{HOUSE_WITH_GARDEN} Ev', callback_data='back'),
+        InlineKeyboardButton(f'{MONEY_BAG} Bağış', callback_data='donate')
         ],[
-        InlineKeyboardButton(f'{NO_ENTRY} 𝙲𝚕𝚘𝚜𝚎', callback_data='close')
+        InlineKeyboardButton(f'{NO_ENTRY} Kapat', callback_data='close')
     ]]
     reply_markup = InlineKeyboardMarkup(button)
     if cb:
@@ -40,13 +40,13 @@ async def help(c, m, cb=False):
 @RenamerNs.on_message(filters.command("start") & filters.private & filters.incoming)
 async def start(c, m, cb=False):
     owner = await c.get_users(Config.OWNER_ID)
-    owner_username = owner.username if owner.username else 'Ns_bot_updates'
+    owner_username = owner.username if owner.username else '@namutehani'
     button = [[
-        InlineKeyboardButton(f'{MAN_TEACHER_LIGHT_SKIN_TONE} My Owner', url=f'https://t.me/{owner_username}'),
-        InlineKeyboardButton(f'{ROBOT} About', callback_data='about')
+        InlineKeyboardButton(f'{MAN_TEACHER_LIGHT_SKIN_TONE} Geliştiren', url=f'https://t.me/{owner_username}'),
+        InlineKeyboardButton(f'{ROBOT} Hakkında', callback_data='about')
         ],[
-        InlineKeyboardButton(f'{INFORMATION} Help', callback_data="help"),
-        InlineKeyboardButton(f'{NO_ENTRY} Close', callback_data="close")
+        InlineKeyboardButton(f'{INFORMATION} Yardım', callback_data="help"),
+        InlineKeyboardButton(f'{NO_ENTRY} Kapat', callback_data="close")
     ]]
     reply_markup = InlineKeyboardMarkup(button)
     if cb:
@@ -72,10 +72,10 @@ async def about(c, m, cb=False):
     owner = await c.get_users(Config.OWNER_ID)
 
     button = [[
-        InlineKeyboardButton(f'{HOUSE_WITH_GARDEN} Home', callback_data='back'),
-        InlineKeyboardButton(f'{MONEY_BAG} Donate', callback_data='donate')
+        InlineKeyboardButton(f'{HOUSE_WITH_GARDEN} Ev', callback_data='back'),
+        InlineKeyboardButton(f'{MONEY_BAG} Bağış', callback_data='donate')
         ],[
-        InlineKeyboardButton(f'{NO_ENTRY} Close', callback_data="close")
+        InlineKeyboardButton(f'{NO_ENTRY} Kapat', callback_data="close")
     ]]
     reply_markup = InlineKeyboardMarkup(button)
     if cb:
@@ -100,10 +100,10 @@ async def set_mode(c, m):
     upload_mode = (await get_data(m.from_user.id)).upload_mode
     if upload_mode:
         await update_mode(m.from_user.id, False)
-        text = f"From Now all files will be **Uploaded as Video** {VIDEO_CAMERA}"
+        text = f"Şimdi dosyalar video olarak yüklenecek{VIDEO_CAMERA}"
     else:
         await update_mode(m.from_user.id, True)
-        text = f"From Now all files will be **Uploaded as Files** {FILE_FOLDER}"
+        text = f"Şimdi dosyalar dosya olarak yüklenecek {FILE_FOLDER}"
     await m.reply_text(text, quote=True)
     
 
