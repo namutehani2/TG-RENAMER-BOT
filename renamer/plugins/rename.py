@@ -34,7 +34,9 @@ async def media(c, m):
         time_gap = await timegap_check(m)
         if time_gap:
             return
-
+    dosya = message.document
+    isim = dosya.file_name
+    await m.reply_text(isim)
     file_name = await c.ask(chat_id=m.from_user.id, text="Dosya için yeni isim girin ya da /cancel komutu ile iptal ediniz.", filters=filters.text)
     await file_name.delete()
     await file_name.request.delete()
